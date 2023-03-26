@@ -21,33 +21,9 @@ export const NavWrapper = styled.nav`
 
 export const LogoIcon = styled.img`
   margin-top: 5px;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 5px;
-`;
-
-export const SearchBar = styled.form`
-  border-radius: 60px;
-  width: 100%;
-  background: rgb(239, 234, 234);
-  height: 35px;
-  display: flex;
-  align-self: center;
-  margin-left: 30px;
-`;
-
-export const SearchIcon = styled.img`
-  width: 18px;
-  height: 18px;
-  margin: 13px 10px 13px 15px;
-`;
-
-export const InputField = styled.input`
-  background: transparent;
-  flex: 1;
-  border: 0;
-  outline: none;
-  font-size: medium;
 `;
 
 export const NavLinksList = styled.ul`

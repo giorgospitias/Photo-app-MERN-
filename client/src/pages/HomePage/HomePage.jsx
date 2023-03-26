@@ -2,19 +2,28 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { GalleryContainer, ImagesContainer, Image } from "./HomePage.styled";
+import { Oval } from "react-loader-spinner";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import PhotoModal from "../../components/PhotoModal/PhotoModal";
 
 function Homepage() {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-
-  const apiKey = "6FfCSdsWANiliNHw7-a--rFRXS5C-6x4fFqwKXqv6ZE";
+  const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [currentPhoto, setCurrentPhoto] = useState({ image: "", index: 0 });
 
   const fetchImages = async () => {
     const { data } = await axios.get(
-      `https://api.unsplash.com/photos?page=${page}&per_page=20&client_id=${apiKey}`
+      `${
+        import.meta.env.VITE_REACT_APP_API_BASE_URL
+      }/photos?page=${page}&per_page=10&client_id=${
+        import.meta.env.VITE_REACT_APP_API_KEY
+      }`
     );
     console.log(data);
     setData((prev) => [...prev, ...data]);
+    setLoading(false);
   };
   useEffect(() => {
     fetchImages();
@@ -25,6 +34,7 @@ function Homepage() {
       window.innerHeight + document.documentElement.scrollHeight + 1 >=
       document.documentElement.scrollHeight
     ) {
+      setLoading(true);
       setPage((prev) => prev + 1);
     }
   };
@@ -34,12 +44,32 @@ function Homepage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const imageView = (img, i) => {
+    setCurrentPhoto({ image: img, index: i });
+  };
+
+  const handleClick = () => {
+    setShowModal(true);
+  };
   return (
     <GalleryContainer>
       <ImagesContainer>
-        {data.map((photo, index) => (
-          <Image src={photo?.urls?.regular} alt="photo" />
-        ))}
+        <ResponsiveMasonry
+          columnsCountBreakPoints={{ 350: 1, 900: 2, 1285: 3 }}
+        >
+          <Masonry gutter="16px">
+            {data.map((image, index) => (
+              <img
+                key={index}
+                src={image.urls.regular}
+                style={{ width: "100%", display: "block" }}
+                alt="photo"
+                onClick={() => imageView(image, index)}
+              />
+            ))}
+          </Masonry>
+        </ResponsiveMasonry>
+        {showModal && <PhotoModal data={data} />}
       </ImagesContainer>
     </GalleryContainer>
   );

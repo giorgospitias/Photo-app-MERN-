@@ -1,18 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./../../assets/logo.png";
-import searchImage from "./../../assets/search-icon.png";
 import galleryIcon from "./../../assets/cameraIcon.svg";
 import aiIcon from "./../../assets/artificial-intelligence2.png";
 import moonIcon from "./../../assets/dark-moon.png";
+import SearchField from "../SearchField/SearchField";
 
 import {
   Container,
   NavWrapper,
   LogoIcon,
-  SearchBar,
-  SearchIcon,
-  InputField,
   NavLinksList,
   NavElement,
   LinkIcon,
@@ -27,11 +24,7 @@ function Navbar(props) {
     <Container>
       <NavWrapper>
         <LogoIcon src={logo} alt="logo" />
-        <SearchBar>
-          <SearchIcon src={searchImage} alt="search" />
-          <InputField type="text" placeholder="Search.." />
-        </SearchBar>
-
+        <SearchField />
         <NavLinksList>
           <NavElement>
             <NavLink to="/">
