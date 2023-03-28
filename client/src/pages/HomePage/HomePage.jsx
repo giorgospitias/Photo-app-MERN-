@@ -11,7 +11,7 @@ function Homepage() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [currentPhoto, setCurrentPhoto] = useState({ image: "", index: 0 });
+  const [currentPhoto, setCurrentPhoto] = useState([{ img: "", i: 0 }]);
 
   const fetchImages = async () => {
     const { data } = await axios.get(
@@ -44,16 +44,22 @@ function Homepage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const imageView = (img, i) => {
-    setCurrentPhoto({ image: img, index: i });
-  };
-
-  const handleClick = () => {
+  const handleClick = (img, i) => {
+    setCurrentPhoto({ img, i });
     setShowModal(true);
   };
+  console.log(showModal);
   return (
     <GalleryContainer>
       <ImagesContainer>
+        {showModal && (
+          <PhotoModal
+            item={currentPhoto}
+            setItem={setCurrentPhoto}
+            setShowModal={setShowModal}
+            dataArr={data}
+          />
+        )}
         <ResponsiveMasonry
           columnsCountBreakPoints={{ 350: 1, 900: 2, 1285: 3 }}
         >
@@ -63,13 +69,12 @@ function Homepage() {
                 key={index}
                 src={image.urls.regular}
                 style={{ width: "100%", display: "block" }}
-                alt="photo"
-                onClick={() => imageView(image, index)}
+                alt={data.alt_description}
+                onClick={() => handleClick(image, index)}
               />
             ))}
           </Masonry>
         </ResponsiveMasonry>
-        {showModal && <PhotoModal data={data} />}
       </ImagesContainer>
     </GalleryContainer>
   );

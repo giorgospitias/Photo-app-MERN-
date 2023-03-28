@@ -6,7 +6,6 @@ export const GalleryContainer = styled.div`
   justify-content: center;
   align-self: center;
   text-align: center;
-
   background: ${(props) => props.theme.main};
 `;
 

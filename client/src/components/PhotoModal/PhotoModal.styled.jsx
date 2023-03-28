@@ -41,23 +41,19 @@ export const UserImage = styled.img`
   height: 30px;
   margin-right: 15px;
   border-radius: 4px;
+  cursor: pointer;
 `;
 
 export const UserName = styled.p`
   font-size: 16px;
   font-weight: 600;
   margin-right: 7px;
-`;
-
-export const UserLastName = styled.p`
-  font-size: 16px;
-  font-weight: 600;
-  margin-right: 7px;
+  cursor: pointer;
 `;
 
 export const CloseButton = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -71,42 +67,35 @@ export const ModalImage = styled.img`
   border-radius: 5px;
 `;
 
-export const ModalPreBtn = styled.button`
+export const ModalPreBtn = styled.div`
   background: none;
   border: none;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  right: 40px;
-
-  img {
-    width: 50px;
-    height: 50px;
-  }
+  right: 20px;
+  clolor: ${(props) => props.theme.main};
 `;
 
-export const ModalNxtBtn = styled.button`
+export const ModalNxtBtn = styled.div`
   background: none;
   border: none;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  left: 40px;
-
-  img {
-    width: 50px;
-    height: 50px;
-  }
+  left: 20px;
+  clolor: ${(props) => props.theme.main};
 `;
 
 export const DownloadBtn = styled.img`
-  font-size: 35px;
-
+  height: 30px;
+  weight: 30px;
   position: absolute;
   bottom: 35px;
   right: 40px;
+  cursor: pointer;
 `;
 
 export const LikesImage = styled.div`
