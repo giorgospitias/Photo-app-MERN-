@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import closeBtn from "./../../assets/closeButton.svg";
-import nextBtn from "./../../assets/arrow-left-light.png";
-import preBtn from "./../../assets/arrow-right-light.png";
 import likes from "./../../assets/likes-icon.svg";
 import download from "./../../assets/download-btn.png";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
@@ -19,11 +17,10 @@ import {
   ModalNxtBtn,
   DownloadBtn,
   LikesImage,
+  UserLink,
 } from "./PhotoModal.styled";
 
 function PhotoModal(props) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
   const handleActions = (action) => {
     let i = props.item.i;
     if (action === "next-img" && props.dataArr.length - 1 > i)
@@ -48,10 +45,12 @@ function PhotoModal(props) {
   return (
     <ModalContainer>
       <ModalDiv>
-        <ModalUser>
-          <UserImage src={props.item.img.user.profile_image.small} />
-          <UserName>{props.item.img.user.name}</UserName>
-        </ModalUser>
+        <UserLink to={`/user/${props.item.img.user.username}`}>
+          <ModalUser>
+            <UserImage src={props.item.img.user.profile_image.small} />
+            <UserName>{props.item.img.user.name}</UserName>
+          </ModalUser>
+        </UserLink>
         <CloseButton src={closeBtn} onClick={handleClose} />
         <ModalImage src={props.item.img.urls.regular} />
         <IconContext.Provider

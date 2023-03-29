@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const ModalContainer = styled.div`
   background: rgba(0, 0, 0, 0.6);
@@ -112,6 +113,8 @@ export const LikesImage = styled.div`
     font-size: 20px;
     font-weight: bold;
     margin-left: 10px;
-    color: rgb(24, 23, 23);
+    color: ${(props) => props.theme.textColor};
   }
 `;
+
+export const UserLink = styled(Link)``;

@@ -14,11 +14,9 @@ export const ImagesContainer = styled.div`
   width: 60%;
 `;
 
-export const Image = styled.img`
-width: 100%;
-border-radius: 5px;
-display: inline-block;
-margin-bottom: 16px;
-position: relative;
-  }
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
 `;

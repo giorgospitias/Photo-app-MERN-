@@ -23,6 +23,7 @@ function SearchField() {
     );
 
     setSearchData(data.results);
+
     console.log(data);
   };
 

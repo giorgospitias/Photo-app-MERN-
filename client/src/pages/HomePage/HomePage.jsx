@@ -1,7 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { GalleryContainer, ImagesContainer, Image } from "./HomePage.styled";
+import {
+  GalleryContainer,
+  ImagesContainer,
+  LoaderContainer,
+} from "./HomePage.styled";
 import { Oval } from "react-loader-spinner";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import PhotoModal from "../../components/PhotoModal/PhotoModal";
@@ -34,7 +37,7 @@ function Homepage() {
       window.innerHeight + document.documentElement.scrollHeight + 1 >=
       document.documentElement.scrollHeight
     ) {
-      setLoading(true);
+      setLoading(false);
       setPage((prev) => prev + 1);
     }
   };
@@ -50,33 +53,52 @@ function Homepage() {
   };
   console.log(showModal);
   return (
-    <GalleryContainer>
-      <ImagesContainer>
-        {showModal && (
-          <PhotoModal
-            item={currentPhoto}
-            setItem={setCurrentPhoto}
-            setShowModal={setShowModal}
-            dataArr={data}
+    <>
+      {loading ? (
+        <LoaderContainer>
+          <Oval
+            height={80}
+            width={80}
+            color="#5bd6e1"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel="oval-loading"
+            secondaryColor="#DBD9D9"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
           />
-        )}
-        <ResponsiveMasonry
-          columnsCountBreakPoints={{ 350: 1, 900: 2, 1285: 3 }}
-        >
-          <Masonry gutter="16px">
-            {data.map((image, index) => (
-              <img
-                key={index}
-                src={image.urls.regular}
-                style={{ width: "100%", display: "block" }}
-                alt={data.alt_description}
-                onClick={() => handleClick(image, index)}
+        </LoaderContainer>
+      ) : (
+        <GalleryContainer>
+          <ImagesContainer>
+            {showModal && (
+              <PhotoModal
+                item={currentPhoto}
+                setItem={setCurrentPhoto}
+                setShowModal={setShowModal}
+                dataArr={data}
               />
-            ))}
-          </Masonry>
-        </ResponsiveMasonry>
-      </ImagesContainer>
-    </GalleryContainer>
+            )}
+            <ResponsiveMasonry
+              columnsCountBreakPoints={{ 350: 1, 900: 2, 1285: 3 }}
+            >
+              <Masonry gutter="16px">
+                {data.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image.urls.regular}
+                    style={{ width: "100%", display: "block" }}
+                    alt={data.alt_description}
+                    onClick={() => handleClick(image, index)}
+                  />
+                ))}
+              </Masonry>
+            </ResponsiveMasonry>
+          </ImagesContainer>
+        </GalleryContainer>
+      )}
+    </>
   );
 }
 

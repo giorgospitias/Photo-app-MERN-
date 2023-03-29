@@ -7,6 +7,7 @@ import { darkTheme, lightTheme } from "./styles/themes";
 import { HomePage, UserPage, AiPage } from "./pages";
 import Navbar from "./components/Navbar/Navbar";
 import SearchPage from "./pages/SearchPage/SearchPage";
+import PhotoPage from "./pages/PhotoPage/PhotoPage";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" exact element={<HomePage />} />
           <Route path="/user/:id" element={<UserPage />} />
           <Route path="/Ai" element={<AiPage />} />
+          <Route path="/photo/:id" element={<PhotoPage />} />
           <Route
             exact
             path="/search/:searchValue"
