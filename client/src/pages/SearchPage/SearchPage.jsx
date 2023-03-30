@@ -9,6 +9,7 @@ import {
   StyledLink,
   StyledImage,
   StyledDiv,
+  LoaderContainer,
 } from "./SearchPage.styled";
 import { PhotoState } from "../../hooks/PhotoContext";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
@@ -56,7 +57,9 @@ function SearchPage() {
           next={fetchMorePhotos}
           hasMore={hasMore}
           loader={
-            <ThreeDots height="80" width="80" radius="9" color="#5bd6e1" />
+            <LoaderContainer>
+              <ThreeDots height="80" width="80" radius="9" color="#5bd6e1" />
+            </LoaderContainer>
           }
         >
           <ResultsContainer>

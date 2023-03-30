@@ -28,3 +28,9 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   color: #6958f2;
 `;
+
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

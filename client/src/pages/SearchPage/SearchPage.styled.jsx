@@ -27,8 +27,6 @@ export const SearchValueSpan = styled.span`
 
 export const ResultsContainer = styled.div`
   text-align: center;
-  margin-left: 10px;
-  width: 932px;
 `;
 
 export const StyledLink = styled(Link)`
@@ -49,4 +47,10 @@ export const StyledDiv = styled.div`
   margin: 10px 10px;
   border-radius: 10px;
   background-color: "gray";
+`;
+
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

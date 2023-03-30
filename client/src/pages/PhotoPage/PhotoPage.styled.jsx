@@ -55,3 +55,10 @@ export const Tags = styled.p`
   align-items: center;
   flex-wrap: wrap;
 `;
+
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+`;

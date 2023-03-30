@@ -55,3 +55,4 @@ export const StyledDiv = styled.div`
 export const StyledNumbers = styled.div`
   font-weight: bold;
 `;
+

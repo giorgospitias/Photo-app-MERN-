@@ -60,8 +60,6 @@ function Homepage() {
             height={80}
             width={80}
             color="#5bd6e1"
-            wrapperStyle={{}}
-            wrapperClass=""
             visible={true}
             ariaLabel="oval-loading"
             secondaryColor="#DBD9D9"

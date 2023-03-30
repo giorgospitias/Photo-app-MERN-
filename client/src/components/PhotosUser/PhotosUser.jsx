@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { ThreeDots } from "react-loader-spinner";
+import { ThreeDots, Oval } from "react-loader-spinner";
 import {
   MainContainer,
   SubContainer,
   StyledImage,
   StyledLink,
   StyledParagraph,
+  LoaderContainer,
 } from "./PhotosUser.styled";
 
 function PhotosUser(props) {
@@ -40,7 +41,18 @@ function PhotosUser(props) {
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        <LoaderContainer>
+          <Oval
+            height={80}
+            width={80}
+            color="#5bd6e1"
+            visible={true}
+            ariaLabel="oval-loading"
+            secondaryColor="#DBD9D9"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
+        </LoaderContainer>
       ) : hasPhotos ? (
         <p>This user has no photos</p>
       ) : (
@@ -49,7 +61,9 @@ function PhotosUser(props) {
           next={fetchUserPhotos}
           hasMore={hasMore}
           loader={
-            <ThreeDots height="80" width="80" radius="9" color="#5bd6e1" />
+            <LoaderContainer>
+              <ThreeDots height="80" width="80" radius="9" color="#5bd6e1" />
+            </LoaderContainer>
           }
         >
           <MainContainer>
