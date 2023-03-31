@@ -6,14 +6,12 @@ export const AiSection = styled.section`
   flex-direction: column;
   justify-content: center;
   align-self: center;
-  text-align: center;
+
   background: ${(props) => props.theme.main};
   margin-top: 1rem;
 `;
 
-export const CreateLink = styled(Link)`
-  padding: ;
-`;
+export const CreateLink = styled(Link)``;
 
 export const CreateButton = styled.button`
   font-family: inter;
@@ -30,6 +28,7 @@ export const CreateButton = styled.button`
 export const MainContainer = styled.div`
   align-self: center;
   width: 60%;
+  text-align: left;
 `;
 
 export const Header = styled.h1`
@@ -46,10 +45,12 @@ export const Paragraph = styled.p`
 
 export const FormFieldContainer = styled.div`
   margin-top: 4rem;
+  align-self: center;
 `;
 
 export const Container = styled.div`
   margin-top: 2.5rem;
+  align-self: center;
 `;
 
 export const InnerContainer = styled.div`
@@ -71,6 +72,4 @@ export const PhotoHeader = styled.h2`
   text-transform: uppercase;
 `;
 
-export const ResultsContainer = styled.div`
-  text-align: center;
-`;
+export const ResultsContainer = styled.div``;
