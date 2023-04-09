@@ -35,7 +35,6 @@ function SearchPage() {
         import.meta.env.VITE_REACT_APP_API_KEY
       }`
     );
-    console.log(data);
     setSearchData((prevData) => [...prevData, ...data.results]);
     setHasMore(data.results.length > 0);
     setPage((prevPage) => prevPage + 1);
@@ -45,7 +44,6 @@ function SearchPage() {
     fetchMorePhotos();
   }, [searchImage]);
 
-  console.log(searchData);
   return (
     <MainContainer>
       <InnerContainer>

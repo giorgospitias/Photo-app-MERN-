@@ -31,15 +31,64 @@ function CreateAiPage() {
     photo: "",
   });
 
-  const [generatePhoto, setGeneratePhoto] = useState(false);
+  const [generatingPhoto, setGeneratingPhoto] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const generateImage = () => {};
+  const generateImage = async () => {
+    if (form.prompt) {
+      try {
+        setGeneratingPhoto(true);
+        const response = await fetch("http://localhost:8080/api/v1/dalle", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            prompt: form.prompt,
+          }),
+        });
+
+        const data = await response.json();
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setGeneratingPhoto(false);
+      }
+    } else {
+      alert("Please provide proper prompt");
+    }
+  };
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (form.prompt && form.photo) {
+      setIsLoading(true);
+      try {
+        const response = await fetch("http://localhost:8080/api/v1/post", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        });
+
+        await response.json();
+        alert("Success");
+        navigate("/ai");
+      } catch (err) {
+        alert(err);
+      } finally {
+        setIsLoading(false);
+      }
+    } else {
+      alert("Please generate an image with proper details");
+    }
+  };
 
   const handleSurpriseMe = () => {
     const randomPrompt = getRandomPrompt(form.prompt);
@@ -83,7 +132,7 @@ function CreateAiPage() {
                 <StyledImage src={preview} alt="preview" />
               )}
 
-              {generatePhoto && (
+              {generatingPhoto && (
                 <LoaderDiv>
                   <Oval
                     height={40}
@@ -97,7 +146,7 @@ function CreateAiPage() {
           </FormWrapper>
           <GenarateBtnContainer className="mt-5 flex gap-5">
             <GenerateButton type="button" onClick={generateImage}>
-              {generatePhoto ? "Generating..." : "Generate"}
+              {generatingPhoto ? "Generating..." : "Generate"}
             </GenerateButton>
           </GenarateBtnContainer>
 

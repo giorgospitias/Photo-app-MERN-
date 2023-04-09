@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import searchImage from "./../../assets/search-icon.png";
 import {
   SearchBar,
@@ -23,8 +23,6 @@ function SearchField() {
     );
 
     setSearchData(data.results);
-
-    console.log(data);
   };
 
   const handleInputChange = (e) => {
@@ -35,14 +33,6 @@ function SearchField() {
     fetchSearchPhotos();
     setSearchValue("");
     setSearchImage(searchValue);
-  };
-
-  const handleEnterSearch = (e) => {
-    if (e.key === "Enter") {
-      fetchSearchPhotos();
-      setSearchValue("");
-      setSearchImage(searchValue);
-    }
   };
 
   return (
@@ -60,7 +50,6 @@ function SearchField() {
         placeholder="Search.."
         value={searchValue}
         onChange={handleInputChange}
-        onKeyDown={handleEnterSearch}
       />
     </SearchBar>
   );

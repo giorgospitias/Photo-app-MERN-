@@ -17,6 +17,10 @@ export const NavWrapper = styled.nav`
   width: 60%;
   align-self: center;
   justify-content: center;
+
+  @media (max-width: 630px) {
+    width: 95%;
+  }
 `;
 
 export const LogoIcon = styled.img`
@@ -79,5 +83,46 @@ export const NavLink = styled(Link)`
 
   &.active {
     background-color: #a2c8fa;
+  }
+`;
+
+export const MobileMenu = styled.div`
+  margin-top: 13px;
+  margin-left: 30px;
+  ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 13%;
+    right: 17%;
+    z-index: 1;
+    padding: 5px 0;
+    background: ${(props) => props.theme.main};
+    text-decoration: none;
+
+    a,
+    li {
+      color: ${(props) => props.theme.textColor};
+      cursor: pointer;
+      text-decoration: none;
+      padding: 7px 15px;
+
+      &:hover {
+        background: #6958f2;
+      }
+    }
+  }
+  .hamburger-icon {
+    font-size: 2rem;
+    transition: 0.3s color ease;
+
+    &:hover {
+      color: #6958f2;
+    }
+
+    ul {
+      top: 150%;
+      left: -310%;
+    }
   }
 `;

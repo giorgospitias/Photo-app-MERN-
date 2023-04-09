@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { FaHeart, FaRegStar, FaStar, FaEye } from "react-icons/fa";
+import { FaHeart, FaEye, FaDownload } from "react-icons/fa";
 import { Oval } from "react-loader-spinner";
+import FileSaver, { saveAs } from "file-saver";
 import {
   Container,
   StyledLink,
@@ -36,6 +37,10 @@ function PhotoPage() {
   useEffect(() => {
     fetchPhoto();
   }, [params.id]);
+
+  const handleDownload = () => {
+    FileSaver.saveAs(data.urls?.regular, "image.png");
+  };
 
   return (
     <>
@@ -71,10 +76,21 @@ function PhotoPage() {
               color="#FF4557"
               type="heart"
             />
-            <Icon icon={<FaEye />} stats={data.views} />
+            <Icon
+              icon={<FaEye />}
+              color={(props) => props.theme.textColor}
+              stats={data.views}
+            />
 
-            <Icon icon={<FaStar />} stats="" color="#F6CF58" type="star" />
+            <Icon
+              icon={<FaDownload />}
+              stats=""
+              color="#F6CF58"
+              type="star"
+              handleClick={handleDownload}
+            />
           </StyledDiv>
+
           <Tags>
             {tagsAvailable &&
               data.tags

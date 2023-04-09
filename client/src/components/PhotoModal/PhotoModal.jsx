@@ -4,6 +4,7 @@ import likes from "./../../assets/likes-icon.svg";
 import download from "./../../assets/download-btn.png";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 import { IconContext } from "react-icons";
+import FileSaver, { saveAs } from "file-saver";
 
 import {
   ModalContainer,
@@ -34,12 +35,7 @@ function PhotoModal(props) {
   };
 
   const handleDownload = () => {
-    const link = document.createElement("a");
-    link.download = "image.png";
-    link.href = props.item.img.urls.download;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    FileSaver.saveAs(props.item.img.urls.regular, "image.png");
   };
 
   return (

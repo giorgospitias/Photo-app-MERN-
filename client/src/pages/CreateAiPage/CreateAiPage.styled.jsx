@@ -12,6 +12,10 @@ export const MainContainer = styled.div`
   align-self: center;
   width: 60%;
   text-align: left;
+
+  @media (max-width: 630px) {
+    width: 95%;
+  }
 `;
 
 export const Header = styled.h1`

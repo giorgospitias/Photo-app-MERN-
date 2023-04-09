@@ -12,6 +12,10 @@ export const GalleryContainer = styled.div`
 export const ImagesContainer = styled.div`
   align-self: center;
   width: 60%;
+
+  @media (max-width: 630px) {
+    width: 95%;
+  }
 `;
 
 export const LoaderContainer = styled.div`

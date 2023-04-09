@@ -24,7 +24,6 @@ function Homepage() {
         import.meta.env.VITE_REACT_APP_API_KEY
       }`
     );
-    console.log(data);
     setData((prev) => [...prev, ...data]);
     setLoading(false);
   };

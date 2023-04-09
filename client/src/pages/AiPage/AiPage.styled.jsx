@@ -21,7 +21,7 @@ export const CreateButton = styled.button`
   border-color: transparent;
   color: white;
   padding: 0.5rem 1rem;
-  margin-left: 53rem;
+  margin-top: 10px;
   cursor: pointer;
 `;
 
@@ -29,12 +29,19 @@ export const MainContainer = styled.div`
   align-self: center;
   width: 60%;
   text-align: left;
+
+  @media (max-width: 630px) {
+    width: 95%;
+  }
 `;
 
 export const Header = styled.h1`
   font-weiht: 800;
   font-size: 32px;
   color: ${(props) => props.theme.textColor};
+  @media (max-width: 717px) {
+    font-size: 28px;
+  }
 `;
 
 export const Paragraph = styled.p`
@@ -44,7 +51,7 @@ export const Paragraph = styled.p`
 `;
 
 export const FormFieldContainer = styled.div`
-  margin-top: 4rem;
+  margin-top: 20px;
   align-self: center;
 `;
 
@@ -72,4 +79,20 @@ export const PhotoHeader = styled.h2`
   text-transform: uppercase;
 `;
 
-export const ResultsContainer = styled.div``;
+export const ResultsContainer = styled.div`
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+`;

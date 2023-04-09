@@ -1,4 +1,4 @@
-import { StyledSpan, StyledIcon, StyledButton } from "./icon.styles";
+import { StyledSpan, StyledIcon, StyledButton, Paragraph } from "./icon.styles";
 
 const convertedNumbers = (x) => {
   if (x !== undefined) {
@@ -18,7 +18,7 @@ const Icon = (props) => {
           {props.icon}
         </StyledIcon>
       </StyledButton>
-      <p>{convertedNumbers(props.stats)}</p>
+      <Paragraph>{convertedNumbers(props.stats)}</Paragraph>
     </StyledSpan>
   );
 };

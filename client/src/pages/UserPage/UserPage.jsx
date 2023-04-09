@@ -15,7 +15,7 @@ import {
 } from "./UserPage.styled";
 import PhotosUser from "../../components/PhotosUser/PhotosUser";
 
-function UserPage(props) {
+function UserPage() {
   const [data, setData] = useState([]);
   const params = useParams();
 
@@ -25,7 +25,7 @@ function UserPage(props) {
         params.id
       }?client_id=${import.meta.env.VITE_REACT_APP_API_KEY}`
     );
-    console.log(data);
+
     setData(data);
   };
   console.log(params.id);

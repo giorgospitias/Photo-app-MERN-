@@ -24,7 +24,7 @@ export const ImageContainer = styled.div`
 
 export const TagLink = styled(Link)`
   text-decoration: none;
-  color: ${(props) => props.theme.text};
+  color: ${(props) => props.theme.textColor};
   border: 1px solid ${(props) => props.theme.textColor};
   border-radius: 3px;
   padding: 5px;

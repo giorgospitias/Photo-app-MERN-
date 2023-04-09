@@ -27,7 +27,6 @@ function PhotosUser(props) {
         import.meta.env.VITE_REACT_APP_API_KEY
       }`
     );
-    console.log(data);
     setData((prevData) => [...prevData, ...data]);
     setHasMore(data.length > 0);
     setPage((prevPage) => prevPage + 1);
@@ -54,7 +53,7 @@ function PhotosUser(props) {
           />
         </LoaderContainer>
       ) : hasPhotos ? (
-        <p>This user has no photos</p>
+        <StyledParagraph>This user has no photos</StyledParagraph>
       ) : (
         <InfiniteScroll
           dataLength={data.length}
